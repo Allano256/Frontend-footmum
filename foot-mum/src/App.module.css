@@ -12,18 +12,18 @@
 }
 
 /* a {
-  color: hwb(0 45% 77%);
-  transition: color ease-in-out 0.3s;
-} */
+    color: hwb(0 45% 77%);
+    transition: color ease-in-out 0.3s;
+  } */
 
 a:hover {
   text-decoration: underline;
 }
 
 /* a:hover i {
-  color: #2142b2;
-  transition: color ease-in-out 0.3s;
-} */
+    color: #2142b2;
+    transition: color ease-in-out 0.3s;
+  } */
 
 i {
   /* color: #cfced3; */
@@ -35,5 +35,5 @@ i {
 i:hover {
   cursor: pointer;
   /* transition: color ease-in-out 0.3s;
-  color: #2142b2; */
+    color: #2142b2; */
 }

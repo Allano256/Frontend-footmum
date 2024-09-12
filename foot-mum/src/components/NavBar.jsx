@@ -7,10 +7,9 @@ import { FaUserPlus } from "react-icons/fa6";
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
 
-
 const NavBar = () => {
   return (
-    
+  
       <Navbar className={styles.NavBar} expand="md" fixed='top' >
       <Container>
         <NavLink to="/">
@@ -24,7 +23,6 @@ const NavBar = () => {
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signin" > <PiSignInBold/>Sign in</NavLink>
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="signup" > < FaUserPlus/>Sign up</NavLink>
            
-
           </Nav>
         </Navbar.Collapse>
       </Container>
