@@ -3,6 +3,9 @@
   background-color: rgb(255, 228, 196);
   min-height: 100vh;
 }
+.Main {
+  padding-top: 80px;
+}
 
 * {
   box-sizing: border-box;
