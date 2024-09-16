@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {Navbar, Container, Nav} from "react-bootstrap";
 import logo from '../assets/logo.png'
 import { IoHomeSharp } from "react-icons/io5";
@@ -6,8 +6,20 @@ import { PiSignInBold } from "react-icons/pi";
 import { FaUserPlus } from "react-icons/fa6";
 import styles from '../styles/NavBar.module.css';
 import { NavLink } from 'react-router-dom';
+import { useCurrentUser } from '../contexts/currentuserContext';
 
 const NavBar = () => {
+    const currentUser=useCurrentUser();
+
+    const loggedInIcons= <>{currentUser?.username}</>;
+    const loggedOutIcons =(
+      <>
+      <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signin" > <PiSignInBold/>Sign in</NavLink>
+      <NavLink className={styles.NavLink} activeClassName={styles.Active} to="signup" > < FaUserPlus/>Sign up</NavLink></>
+      
+    )
+
+
   return (
   
       <Navbar className={styles.NavBar} expand="md" fixed='top' >
@@ -20,8 +32,8 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/" exact > <IoHomeSharp/>  Home</NavLink>
-            <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/signin" > <PiSignInBold/>Sign in</NavLink>
-            <NavLink className={styles.NavLink} activeClassName={styles.Active} to="signup" > < FaUserPlus/>Sign up</NavLink>
+            
+            {currentUser? loggedInIcons : loggedOutIcons}
            
           </Nav>
         </Navbar.Collapse>
