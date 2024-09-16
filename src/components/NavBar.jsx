@@ -13,6 +13,8 @@ import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/currentuserContext';
 import Avatar from "./Avatar";
 import axios from 'axios';
+import useClickOutSideToggle from '../hooks/useClickOutSideToggle';
+
 
 
 
@@ -20,6 +22,8 @@ const NavBar = () => {
     const currentUser=useCurrentUser();
 
     const setCurrentUser=useSetCurrentUser();
+
+    const {expanded, setExpanded, ref}= useClickOutSideToggle();
 
     const handleSignOut=async()=>{
       try{
@@ -55,7 +59,7 @@ const NavBar = () => {
 
   return (
   
-      <Navbar className={styles.NavBar} expand="md" fixed='top' >
+      <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed='top' >
       <Container>
         <NavLink to="/">
         <Navbar.Brand href="#home"> <img src={logo} alt='a logo' height="45px" ></img>   </Navbar.Brand>
@@ -64,7 +68,7 @@ const NavBar = () => {
          {/* The add post icon will only show when its the currently logged in user */}
         {currentUser && addPostIcon}
         
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle ref={ref} onClick={()=> setExpanded(!expanded)} aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <NavLink className={styles.NavLink} activeClassName={styles.Active} to="/" exact > <IoHomeSharp/>  Home</NavLink>
